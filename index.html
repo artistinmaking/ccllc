@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <link rel="apple-touch-icon" href="images/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Private Art Advisory | Buy Picasso, Bacon, Monet Off-Market | Cambridge Collective</title>
+  <meta name="description" content="Private art advisory sourcing off-market Picasso, Bacon, Monet and blue-chip works for collectors and family offices. Founded at Harvard. $700M+ advised."/>
+  <link rel="canonical" href="https://www.cambridgecollectivellc.com/"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="image" href="images/monet-garden.png" fetchpriority="high"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .hero-full{position:relative;width:100%;height:100svh;min-height:540px;overflow:hidden;margin-top:var(--nav-h)}
+    .hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+    .hslide.active{opacity:1}
+    .hslide img{width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.12) 0%,rgba(0,0,0,.06) 40%,rgba(0,0,0,.60) 100%);z-index:1}
+    .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(44px,7vw,88px) var(--gutter)}
+    .hero-content h1{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-style:italic;font-size:clamp(2.6rem,5.8vw,6rem);line-height:1.08;color:#fff;max-width:840px;margin-bottom:20px;text-shadow:0 2px 32px rgba(0,0,0,.22)}
+    .hero-sub{font-family:'Lora',Georgia,serif;font-size:clamp(.88rem,1.3vw,1.05rem);line-height:1.82;color:rgba(255,255,255,.84);max-width:400px;margin-bottom:30px}
+    .hero-actions{display:flex;align-items:center;gap:34px;flex-wrap:wrap;margin-bottom:44px}
+    .hbtn-s{display:inline-block;font-family:'Jost',sans-serif;font-size:.62rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;background:#fff;color:#000;padding:13px 34px;transition:background .2s}
+    .hbtn-s:hover{background:#efefef}
+    .hbtn-g{display:inline-block;font-family:'Jost',sans-serif;font-size:.62rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.45);color:rgba(255,255,255,.82);padding-bottom:3px}
+    .hero-bar{display:flex;justify-content:space-between;align-items:center}
+    .slide-label{font-family:'Jost',sans-serif;font-size:.5rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.52)}
+    .slide-dots{display:flex;gap:7px}
+    .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s;border:none;padding:0}
+    .dot.active{background:rgba(255,255,255,.88)}
+    .stats-bar{display:flex;border-bottom:1px solid var(--bdr)}
+    .stat-c{flex:1;padding:26px var(--gutter);border-right:1px solid var(--bdr)}
+    .stat-c:last-child{border-right:none}
+    .stat-c .n{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(1.3rem,2.2vw,1.9rem);display:block;line-height:1;margin-bottom:6px}
+    .stat-c .l{font-family:'Jost',sans-serif;font-size:.53rem;letter-spacing:.2em;text-transform:uppercase;color:#909090}
+    @media(max-width:600px){.stats-bar{flex-direction:column}.stat-c{border-right:none;border-bottom:1px solid var(--bdr)}}
+    .artwork-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+    .art-item{aspect-ratio:4/5;overflow:hidden;position:relative;background:#ccc}
+    .art-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+    .art-item:hover img{transform:scale(1.06)}
+    .art-item figcaption{position:absolute;bottom:0;inset-inline:0;padding:36px 12px 11px;background:linear-gradient(transparent,rgba(0,0,0,.52));font-family:'Jost',sans-serif;font-size:.49rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.84)}
+    @media(max-width:600px){.artwork-strip{grid-template-columns:1fr 1fr}}
+    @media(max-width:860px){.about-split{grid-template-columns:1fr!important}.about-split-right{border-left:none!important;border-top:1px solid var(--bdr);padding-left:0!important;padding-top:var(--pad-s)!important}}
+  .harvard-split { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,100px); align-items:start; max-width:1260px; margin:0 auto; }
+    @media(max-width:760px){ .harvard-split { grid-template-columns:1fr; } }
+    .exp-band-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    @media(max-width:680px){ .exp-band-grid { grid-template-columns:1fr; gap:32px; } .exp-band-grid > div { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.12); padding-left:0 !important; padding-right:0 !important; } }
+    
+    /* ── MOBILE FIXES ── */
+    @media(max-width:600px){
+      /* Hero: push text up so it shows without scrolling */
+      .hero-content {
+        justify-content: flex-start !important;
+        padding-top: clamp(80px, 20vw, 120px) !important;
+        padding-bottom: 0 !important;
+      }
+      .hero-actions { margin-bottom: 16px; }
+      .hero-bar { display: none; }
+
+      /* Transparency section: center align on mobile */
+      .harvard-split {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+      }
+      .harvard-split h2 { text-align: center; }
+      .harvard-split p { text-align: center; }
+      .harvard-split .eyebrow { justify-content: center; }
+
+      /* Experience band: single column, fully left-aligned */
+      .exp-band-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+      .exp-band-grid > div {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,.12) !important;
+        padding: 22px 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 18px !important;
+      }
+      .exp-band-grid > div:last-child { border-bottom: none !important; }
+      .exp-band-grid span:first-child {
+        font-size: 1.5rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        text-align: left !important;
+      }
+      .exp-band-grid span:last-child {
+        font-size: .8rem !important;
+        line-height: 1.55 !important;
+        text-align: left !important;
+        color: rgba(255,255,255,.6) !important;
+      }
+    }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GPB1CGBKZX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GPB1CGBKZX');
+</script>
+  <meta name="keywords" content="private art advisor, buy Picasso, buy Francis Bacon, buy Monet, off-market art, art advisory, blue chip art, UHNW art collecting, private art sales, art collection counsel, Harvard art advisory, buy fine art privately"/>
+  <meta property="og:title" content="Private Art Advisory | Buy Picasso, Bacon, Monet Off-Market | Cambridge Collective"/>
+  <meta property="og:description" content="Cambridge Collective is a private art advisory firm. We source off-market works by Picasso, Francis Bacon, Monet, Rembrandt, Warhol, and Richter for collectors, family offices, and institutions. Founded at Harvard Business School."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.cambridgecollectivellc.com/"/>
+  <meta property="og:site_name" content="Cambridge Collective"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Private Art Advisory | Buy Picasso, Bacon, Monet Off-Market | Cambridge Collective"/>
+  <meta name="twitter:description" content="Cambridge Collective is a private art advisory firm. We source off-market works by Picasso, Francis Bacon, Monet, Rembrandt, Warhol, and Richter for collectors, family offices, and institutions. Founded at Harvard Business School."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.cambridgecollectivellc.com/#organization",
+      "name": "Cambridge Collective LLC",
+      "alternateName": "Cambridge Collective",
+      "url": "https://www.cambridgecollectivellc.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.cambridgecollectivellc.com/images/logo.png",
+        "width": 746,
+        "height": 84
+      },
+      "image": "https://www.cambridgecollectivellc.com/images/monet-garden.png",
+      "description": "Private art advisory firm specializing in off-market acquisitions of blue-chip artworks including Picasso, Francis Bacon, Monet, Warhol, and Rembrandt for collectors, family offices, and institutions worldwide.",
+      "foundingDate": "2023",
+      "founder": [
+        {
+          "@type": "Person",
+          "@id": "https://www.cambridgecollectivellc.com/#ram-solanki",
+          "name": "Ram Solanki",
+          "jobTitle": "Founding Partner",
+          "worksFor": {"@id": "https://www.cambridgecollectivellc.com/#organization"},
+          "url": "https://www.cambridgecollectivellc.com/about.html"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.cambridgecollectivellc.com/#larry-whitlock",
+          "name": "Larry Whitlock",
+          "jobTitle": "Founding Partner",
+          "worksFor": {"@id": "https://www.cambridgecollectivellc.com/#organization"},
+          "url": "https://www.cambridgecollectivellc.com/about.html"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "50 Follen Street, Suite 507",
+        "addressLocality": "Cambridge",
+        "addressRegion": "MA",
+        "postalCode": "02138",
+        "addressCountry": "US"
+      },
+      "telephone": "+18573769873",
+      "email": "inquiries@cambridgecollectivellc.com",
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "Pablo Picasso", "Francis Bacon", "Claude Monet", "Andy Warhol",
+        "Gerhard Richter", "Rembrandt van Rijn", "Old Masters", "Post-War Art",
+        "French Impressionism", "Private Art Sales", "Art Advisory",
+        "Blue Chip Art", "Art Collection Management", "Auction Advisory"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/cambridge-collective-llc"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Harvard Innovation Labs",
+        "url": "https://innovationlabs.harvard.edu/"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.cambridgecollectivellc.com/#business",
+      "name": "Cambridge Collective LLC",
+      "url": "https://www.cambridgecollectivellc.com/",
+      "parentOrganization": {"@id": "https://www.cambridgecollectivellc.com/#organization"},
+      "priceRange": "$$$",
+      "telephone": "+18573769873",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "50 Follen Street, Suite 507",
+        "addressLocality": "Cambridge",
+        "addressRegion": "MA",
+        "postalCode": "02138",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.cambridgecollectivellc.com/#website",
+      "url": "https://www.cambridgecollectivellc.com/",
+      "name": "Cambridge Collective",
+      "publisher": {"@id": "https://www.cambridgecollectivellc.com/#organization"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.cambridgecollectivellc.com/insights.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.cambridgecollectivellc.com/#webpage",
+      "url": "https://www.cambridgecollectivellc.com/",
+      "name": "Private Art Advisory | Buy Picasso, Bacon, Monet Off-Market | Cambridge Collective",
+      "isPartOf": {"@id": "https://www.cambridgecollectivellc.com/#website"},
+      "about": {"@id": "https://www.cambridgecollectivellc.com/#organization"},
+      "description": "Private art advisory firm sourcing off-market Picasso, Bacon, Monet and blue-chip works for collectors and family offices. Founded at Harvard."
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-brand"><img src="images/logo.png" alt="Cambridge Collective" style="height:28px;width:auto;display:block;"/></a>
+  <button class="menu-btn" aria-label="Menu"><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li class="cta-link"><a href="contact.html">Begin a Conversation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO: Monet garden / Rembrandt / Pollock / Picasso Musketeer -->
+<div class="hero-full">
+  <div class="hslide active"><img src="images/monet-garden.png"       alt="Monet, The Artist's Family in the Garden, 1875" loading="eager" width="2000" height="1505" fetchpriority="high"/></div>
+  <div class="hslide"><img src="images/rembrandt-nightwatch.png"      alt="Rembrandt, The Night Watch, 1642"              loading="lazy" width="2000" height="1014"/></div>
+  <div class="hslide"><img src="images/warhol-elvis.png"              alt="Warhol, Double Elvis, 1963"                    loading="lazy" width="756"  height="1182"/></div>
+  <div class="hslide"><img src="images/picasso-jeune-fille.png"       alt="Picasso, Jeune fille endormie, 1935"           loading="lazy" width="1522" height="1262"/></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    
+    <h1>We source what <br>the public market <br><em>rarely sees</em></h1>
+    <p class="hero-sub">A private gateway to the world's most significant works. Off-market acquisitions, private sales, and collection counsel for collectors, family offices, and institutions worldwide.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="hbtn-s">Begin an Enquiry</a>
+      <a href="services.html" class="hbtn-g">Our Services</a>
+    </div>
+    <div class="hero-bar">
+      <span class="slide-label" id="slide-label">Monet — The Artist's Family in the Garden, 1875</span>
+      <div class="slide-dots" id="dots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HARVARD / TRANSPARENCY SECTION -->
+<div style="padding:clamp(52px,7vw,96px) var(--gutter);border-bottom:1px solid var(--bdr);">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:start;max-width:1260px;margin:0 auto;" class="harvard-split">
+    <div>
+      <p class="eyebrow" style="margin-bottom:24px;color:#000;">Our Approach</p>
+      <h2 class="section-title" style="font-size:clamp(1.7rem,3.2vw,2.8rem);">Built at Harvard<br><em>Built on transparency</em></h2>
+    </div>
+    <div>
+      <p class="body-copy">Cambridge Collective was founded at the Harvard Innovation Labs at Harvard Business School. As we collected art and built relationships across the art world, we kept encountering the same problem: the market is opaque with hidden fee structures, and the finest works are accessible to only a select few.</p>
+      <p class="body-copy" style="margin-top:14px;">We set out to change that. We tell you the net-to-owner price. We disclose our fee transparently. We tell you where the work is coming from. You are not paying for mystery. You are paying for access, transparency, and counsel that is entirely on your side.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BLACK EXPERIENCE BAND -->
+<div style="background:#000;padding:clamp(52px,7vw,88px) var(--gutter);">
+  <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:52px;">Our Experience</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="exp-band-grid">
+    <div style="padding:0 clamp(24px,4vw,56px) 0 0;border-right:1px solid rgba(255,255,255,.12);">
+      <span style="font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(2.8rem,5vw,5rem);color:#fff;display:block;line-height:1;margin-bottom:16px;">$700M+</span>
+      <span style="font-family:'Lora',Georgia,serif;font-size:clamp(.9rem,1.4vw,1.1rem);color:rgba(255,255,255,.6);line-height:1.65;display:block;">In artworks advised globally, across private sales, auction advisory, and<br>collection counsel</span>
+    </div>
+    <div style="padding:0 clamp(24px,4vw,56px);border-right:1px solid rgba(255,255,255,.12);">
+      <span style="font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(2.8rem,5vw,5rem);color:#fff;display:block;line-height:1;margin-bottom:16px;">2</span>
+      <span style="font-family:'Lora',Georgia,serif;font-size:clamp(.9rem,1.4vw,1.1rem);color:rgba(255,255,255,.6);line-height:1.65;display:block;">Generations of art collecting experience informing every acquisition mandate we take on</span>
+    </div>
+    <div style="padding:0 0 0 clamp(24px,4vw,56px);">
+      <span style="font-family:'Playfair Display',Georgia,serif;font-weight:400;font-style:italic;font-size:clamp(2.8rem,5vw,5rem);color:#fff;display:block;line-height:1;margin-bottom:16px;">Global</span>
+      <span style="font-family:'Lora',Georgia,serif;font-size:clamp(.9rem,1.4vw,1.1rem);color:rgba(255,255,255,.6);line-height:1.65;display:block;">Private collector network spanning Europe, the Americas, the Gulf, and Asia Pacific</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTWORK STRIP: 4 different works -->
+<div class="artwork-strip">
+  <figure class="art-item"><img src="images/kandinsky.png"         alt="Kandinsky, Panel for Edwin R. Campbell No. 4, 1914" loading="lazy" width="2000" height="1125"/><figcaption>Kandinsky — Panel for Edwin R. Campbell No. 4, 1914</figcaption></figure>
+  <figure class="art-item"><img src="images/hockney-jade.png"      alt="Hockney, Jade Plant, 2014"                          loading="lazy" width="902"  height="1206"/><figcaption>Hockney — Jade Plant, 2014</figcaption></figure>
+  <figure class="art-item"><img src="images/picasso-francoise.png" alt="Picasso, Buste de Francoise, 1946"                  loading="lazy" width="1032" height="1264"/><figcaption>Picasso — Buste de Francoise, 1946</figcaption></figure>
+  <figure class="art-item"><img src="images/warhol-flowers.png"    alt="Warhol, Flowers, 1964"                              loading="lazy" width="1190" height="1196"/><figcaption>Warhol — Flowers, 1964</figcaption></figure>
+</div>
+
+<!-- SERVICES -->
+<section class="services-preview">
+  <div class="services-intro fade-up">
+    <p class="eyebrow" style="margin-bottom:22px;">What We Do</p>
+    <h2 class="section-title">Three mandates<br><em>One level of access</em></h2>
+    <p class="body-copy" style="margin-top:18px;">Cambridge Collective operates where private transactions and institutional relationships converge. We access inventory that the public market never encounters.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-item fade-up">
+      <span class="svc-num">01</span>
+      <h3>Private Acquisitions</h3>
+      <p class="body-copy">We source exceptional, off-market works across Old Masters, Impressionism, Modern, and Post-War art that rarely enter the public domain. From a Caravaggio to a Blue Period Picasso, we work with established collectors who transact only through our private channels.</p>
+      <a href="services.html#acquisitions" class="svc-link">Learn more</a>
+    </div>
+    <div class="svc-item fade-up">
+      <span class="svc-num">02</span>
+      <h3>Auction Advisory</h3>
+      <p class="body-copy">Navigating Christie's, Sotheby's, and Phillips requires more than market knowledge. We advise on timing, estimates, and execution. We work directly with the major houses, and manage due diligence, condition review, post-sale settlement, and logistics from start to finish.</p>
+      <a href="services.html#auction" class="svc-link">Learn more</a>
+    </div>
+    <div class="svc-item fade-up">
+      <span class="svc-num">03</span>
+      <h3>Collection Advisory</h3>
+      <p class="body-copy">We study your holdings in depth to understand their strengths, gaps, and long-term direction. Then we advise on what to acquire, what to consider selling, and how to build a collection with lasting cultural and financial weight.</p>
+      <a href="services.html#collection" class="svc-link">Learn more</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <p class="eyebrow fade-up" style="justify-content:center;color:rgba(255,255,255,.88);margin-bottom:32px;"><span style="display:inline-block;width:22px;height:1px;background:rgba(255,255,255,.4);margin-right:14px;vertical-align:middle;"></span>The Private Market</p>
+  <h2 class="fade-up">The market's most<br>significant works<br>change hands <em>quietly</em></h2>
+  <p class="body-copy fade-up">A meaningful proportion of transactions never appear in any public record. They move between collections through channels built on decades of trust. Cambridge Collective operates within those channels.</p>
+  <a href="contact.html" class="btn btn-outline fade-up">Begin a Conversation</a>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section style="padding:0 var(--gutter);">
+  <div class="about-split" style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--bdr);">
+    <div style="padding:var(--pad) var(--gutter) var(--pad) 0;" class="fade-up">
+      <p class="eyebrow" style="margin-bottom:22px;color:#000;">Our Team</p>
+      <h2 class="section-title">The people behind<br><em>every mandate</em></h2>
+      <p class="body-copy" style="margin-top:18px;">Our team brings together deep expertise in art history, finance, and law. It is this combination that allows us to advise with precision on both the cultural and financial dimensions of every transaction.</p>
+      <p class="body-copy" style="margin-top:12px;">We do not operate a gallery or a public inventory. Every engagement is built around a single client mandate.</p>
+      <a href="about.html" class="btn btn-ghost" style="display:inline-block;margin-top:32px;">Meet the Team</a>
+    </div>
+    <div class="about-split-right" style="padding:var(--pad) 0 var(--pad) var(--gutter);border-left:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:center;" class="fade-up">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;width:100%;max-width:680px;">
+        <div class="team-card">
+          <div class="team-photo" style="overflow:hidden;aspect-ratio:3/4;"><img src="images/team-ram.jpg" alt="Ram Solanki" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:grayscale(100%);" loading="lazy" width="958" height="917"/></div>
+          <span class="team-role">Founding Partner</span><span class="team-name">Ram Solanki</span>
+        </div>
+        <div class="team-card">
+          <div class="team-photo" style="overflow:hidden;aspect-ratio:3/4;"><img src="images/team-larry.png" alt="Larry Whitlock" style="width:100%;height:100%;object-fit:cover;object-position:center 5%;filter:grayscale(100%);" loading="lazy" width="662" height="759"/></div>
+          <span class="team-role">Founding Partner</span><span class="team-name">Larry Whitlock</span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<!-- Black band: full-bleed, no parent padding -->
+<div style="background:#000;width:100%;padding:clamp(36px,5vw,60px) var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+  <div>
+    <p class="eyebrow fade-up" style="color:rgba(255,255,255,.5);margin-bottom:16px;font-size:.65rem;"><span style="display:inline-block;width:22px;height:1px;background:rgba(255,255,255,.3);margin-right:14px;vertical-align:middle;"></span>Market Intelligence</p>
+    <h2 class="section-title fade-up" style="color:#fff;">From the desk of<br><em>Cambridge Collective</em></h2>
+  </div>
+  <a href="insights.html" class="btn btn-outline fade-up" style="margin-bottom:6px;">All Articles</a>
+</div>
+<section class="insights-preview" style="padding-top:0;margin-top:0;">
+  <div class="insights-grid" style="border-top:none;">
+    <a href="article-4.html" class="insight-card fade-up">
+      <div class="card-img"><img src="images/richter-abstraktes.png" alt="Richter, Abstraktes Bild" loading="lazy" width="1710" height="1136"/></div>
+      <span class="card-cat">Collecting · 2026</span>
+      <p class="card-title">Why UHNW Investors Are Allocating More to Art Than Ever Before</p>
+      <p class="card-excerpt">Portfolio allocation data, tax advantages, and why sophisticated collectors treat art as a serious asset class.</p>
+    </a>
+    <a href="article-1.html" class="insight-card fade-up">
+      <div class="card-img"><img src="images/botero-family.png" alt="Botero, Family Scene" loading="lazy" width="1358" height="1278"/></div>
+      <span class="card-cat">Art Advisory · 2026</span>
+      <p class="card-title">Why You Need an Art Advisor: The Hidden Cost of Going Alone</p>
+      <p class="card-excerpt">Buyers without professional representation consistently overpay. Here is what that gap looks like in practice.</p>
+    </a>
+    <a href="article-2.html" class="insight-card fade-up">
+      <div class="card-img"><img src="images/bacon-pope.png" alt="Francis Bacon, Pope" loading="lazy" width="1093" height="1280"/></div>
+      <span class="card-cat">Post-War · 2026</span>
+      <p class="card-title">What Drives the Francis Bacon Market Above $50 Million</p>
+      <p class="card-excerpt">An analysis of Bacon's market hierarchy and what collectors need to understand before engaging at this level.</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo.png" alt="Cambridge Collective" style="height:22px;width:auto;display:block;margin-bottom:8px;"/><p class="footer-tagline">We source what the public market rarely sees</p></div>
+    <div class="footer-col"><h5>Navigation</h5><ul><li><a href="about.html">About the Firm</a></li><li><a href="services.html">Services</a></li><li><a href="insights.html">Market Insights</a></li><li><a href="contact.html">Begin a Conversation</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><address>50 Follen Street, Suite 507<br>Cambridge, MA 02138<br><br><a href="tel:+18573769873">+1 (857) 376-9873</a><br><a href="mailto:inquiries@cambridgecollectivellc.com">inquiries@cambridgecollectivellc.com</a></address></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 Cambridge Collective LLC. All rights reserved.</span><span>Cambridge, Massachusetts</span></div>
+</footer>
+
+<script>
+const nav=document.getElementById("nav");
+window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>20));
+document.querySelector(".menu-btn").addEventListener("click",()=>document.querySelector(".nav-links").classList.toggle("open"));
+
+const slides=document.querySelectorAll(".hslide");
+const labels=["Monet — The Artist's Family in the Garden, 1875","Rembrandt — The Night Watch, 1642","Warhol — Double Elvis [Ferus Type], 1963","Picasso — Jeune fille endormie, 1935"];
+const dotsEl=document.getElementById("dots");
+const labelEl=document.getElementById("slide-label");
+let cur=0,timer;
+slides.forEach((_,i)=>{
+  const d=document.createElement("button");
+  d.className="dot"+(i===0?" active":"");
+  d.setAttribute("aria-label","Slide "+(i+1));
+  d.onclick=()=>{clearInterval(timer);goTo(i);timer=setInterval(next,5500);};
+  dotsEl.appendChild(d);
+});
+function goTo(n){
+  slides[cur].classList.remove("active");
+  document.querySelectorAll(".dot")[cur].classList.remove("active");
+  cur=n;
+  slides[cur].classList.add("active");
+  document.querySelectorAll(".dot")[cur].classList.add("active");
+  if(labelEl)labelEl.textContent=labels[cur];
+}
+function next(){goTo((cur+1)%slides.length);}
+timer=setInterval(next,5500);
+
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("visible")})},{threshold:0.07});
+document.querySelectorAll(".fade-up").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
